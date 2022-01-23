@@ -1,18 +1,18 @@
-import { UserRepository } from "../repository/users"
+import { UserRepositoryInterface } from "../repository/users"
 import { User } from "../models/users"
 import { validateNewUser } from "./validations/users"
 
 // UserServiceInterface is the interface that describes a user
 // service object.
-interface UserServiceInterface {
+export interface UserServiceInterface {
     saveUser(user: User, callback: (err: Error | null, res: User | null) => void): void
 }
 
 // UserService is the default implementation for UserServiceInterface.
 export class UserService implements UserServiceInterface {
-    userRepo: UserRepository
+    userRepo: UserRepositoryInterface
 
-    constructor(userRepo: UserRepository) {
+    constructor(userRepo: UserRepositoryInterface) {
         this.userRepo = userRepo
     }
 

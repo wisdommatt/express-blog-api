@@ -3,7 +3,7 @@ import { User } from "../models/users"
 
 // UserRepositoryInterface is the interface that defines a
 // user repository.
-interface UserRepositoryInterface {
+export interface UserRepositoryInterface {
     saveUser(user: User, callback: (err: Error | null, res: User | null) => void): void
 }
 

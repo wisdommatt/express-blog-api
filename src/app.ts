@@ -1,6 +1,6 @@
-import express, { Application, Request, Response } from "express"
+import express, { Application } from "express"
 import { Db, MongoClient } from "mongodb"
-import { User } from "./api/models/users"
+import { UserController } from "./api/controllers/users"
 import { UserRepository } from "./api/repository/users"
 import { UserService } from "./api/services/users"
 
@@ -14,22 +14,11 @@ app.use(express.json())
 
 let userRepo: UserRepository = new UserRepository(mongoDB)
 let userService: UserService = new UserService(userRepo)
+let userController: UserController = new UserController(userService)
 
-app.post("/users/", (req: Request, res: Response) => {
-    let newUser: User = req.body
-    userService.saveUser(newUser, (err, user) => {
-        console.log(err, err === undefined)
-        if (err) {
-            res.status(400)
-            res.json({ status: "error", message: err.message })
-            return
-        }
-        res.json({ status: "success", message: "user added successfully", user })
-    })
-})
+userController.initRoutes(app)
 
 let port: number = Number(process.env.PORT) || 4141
-
 app.listen(port, () => {
     console.log(`app running on port: ${port}`)
 })

@@ -1,7 +1,7 @@
 import { User } from "../../models/users";
 import { isNumber, isString } from "./types-validation"
 
-function validateNewUser(user: User): Error | null {
+export function validateNewUser(user: User): Error | null {
     if (!isNumber(user.age) || user.age <= 0) {
         return new Error("invalid age")
     }
@@ -22,5 +22,3 @@ function validateNewUser(user: User): Error | null {
     }
     return null
 }
-
-export { validateNewUser }
