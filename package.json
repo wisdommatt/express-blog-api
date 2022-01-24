@@ -5,9 +5,12 @@
     "build": "tsc -p ."
   },
   "dependencies": {
+    "@types/jaeger-client": "^3.18.3",
     "bcrypt": "^5.0.1",
     "express": "^4.17.2",
-    "mongodb": "^4.3.1"
+    "jaeger-client": "^3.19.0",
+    "mongodb": "^4.3.1",
+    "opentracing": "^0.14.7"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

@@ -1,4 +1,4 @@
-import { Db, Collection, ObjectId, AnyError, InsertOneResult, ObjectID } from "mongodb"
+import { Db, Collection, ObjectId } from "mongodb"
 import { User } from "../models/users"
 
 // UserRepositoryInterface is the interface that defines a
@@ -16,7 +16,7 @@ export class UserRepository implements UserRepositoryInterface {
         this.collection = mongoDB.collection("users")
     }
 
-    saveUser(user: User, callback: (err: Error | null, res: User | null) => void): void {
+    public saveUser(user: User, callback: (err: Error | null, res: User | null) => void): void {
         user._id = new ObjectId().toHexString()
         user.timeAdded = new Date()
         user.lastUpdated = new Date()

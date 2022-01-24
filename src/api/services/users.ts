@@ -16,7 +16,7 @@ export class UserService implements UserServiceInterface {
         this.userRepo = userRepo
     }
 
-    saveUser(user: User, callback: (err: Error | null, res: User | null) => void): void {
+    public saveUser(user: User, callback: (err: Error | null, res: User | null) => void): void {
         let validationErr = validateNewUser(user)
         if (validationErr) {
             callback(validationErr, null)
